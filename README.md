@@ -23,13 +23,11 @@ Green Harvest Hub dirancang untuk menjadi jembatan antara petani lokal dan konsu
 * **Chatbot Interaktif**: Dapatkan jawaban cepat atas pertanyaan umum tentang produk, harga, pengiriman, atau agrowisata.
 * **Desain Responsif & Modern**: Tampilan yang optimal di berbagai perangkat, dari desktop hingga mobile.
 
-[⬆ Kembali ke atas](#green-harvest-hub-🌱)
 
 ## 📸 Preview UI
 
 Untuk melihat preview UI, Anda dapat membuka file `index.html` dan `products.html` di browser Anda.
 
-[⬆ Kembali ke atas](#green-harvest-hub-🌱)
 
 ## 🛠️ Tech Stack
 
@@ -41,7 +39,6 @@ Proyek ini dibangun menggunakan teknologi web standar yang kuat dan ringan:
 * **Leaflet.js**: Untuk menampilkan peta agrowisata interaktif.
 * **Font Awesome**: Untuk ikonografi.
 
-[⬆ Kembali ke atas](#green-harvest-hub-🌱)
 
 ## 📦 Cara Instalasi / Setup Lokal
 
@@ -70,13 +67,11 @@ Untuk menjalankan proyek Green Harvest Hub di lingkungan lokal Anda, ikuti langk
     start index.html
     ```
 
-[⬆ Kembali ke atas](#green-harvest-hub-🌱)
 
 ## 🧪 Cara Menjalankan Testing
 
 Saat ini, proyek ini tidak menyertakan unit atau integrasi tes otomatis. Fungsionalitas diuji secara manual.
 
-[⬆ Kembali ke atas](#green-harvest-hub-🌱)
 
 ## 📁 Struktur Folder/Arsitektur Proyek
 
@@ -92,7 +87,6 @@ green-harvest-hub/
 └── products.js             # Logika JavaScript untuk halaman produk dan keranjang
 
 
-[⬆ Kembali ke atas](#green-harvest-hub-🌱)
 
 ## ⚙️ Fungsionalitas / Cara Menggunakan
 
@@ -118,13 +112,11 @@ green-harvest-hub/
 * Klik ikon chatbot mengambang di pojok kanan bawah halaman manapun untuk membuka modal chatbot.
 * Ketik pertanyaan Anda di kolom input dan tekan Enter atau klik ikon kirim untuk berinteraksi dengan chatbot.
 
-[⬆ Kembali ke atas](#green-harvest-hub-🌱)
 
 ## 🚧 Status Pengembangan
 
 Proyek ini sedang dalam tahap pengembangan aktif. Fitur-fitur inti telah diimplementasikan dan fungsional, namun masih ada ruang untuk penyempurnaan, optimasi, dan penambahan fitur baru. Kami menyambut kontribusi dari komunitas!
 
-[⬆ Kembali ke atas](#green-harvest-hub-🌱)
 
 ## 📌 TODO / Roadmap
 
@@ -138,7 +130,6 @@ Berikut adalah beberapa fitur yang direncanakan untuk pengembangan selanjutnya:
 * **Internasionalisasi**: Menambahkan dukungan untuk bahasa lain selain Bahasa Indonesia.
 * **Fitur Ulasan Produk**: Memungkinkan konsumen untuk memberikan ulasan dan rating produk.
 
-[⬆ Kembali ke atas](#green-harvest-hub-🌱)
 
 ## 🤝 Kontribusi
 
@@ -153,13 +144,11 @@ Kami sangat senang menerima kontribusi untuk proyek Green Harvest Hub! Jika Anda
 
 Pastikan kode Anda bersih, terdokumentasi dengan baik, dan mengikuti gaya kode yang sudah ada.
 
-[⬆ Kembali ke atas](#green-harvest-hub-🌱)
 
 ## 🧠 Lisensi
 
 Proyek ini dilisensikan di bawah **Lisensi MIT**. Lihat file [LICENSE](https://opensource.org/licenses/MIT) untuk detail lebih lanjut.
 
-[⬆ Kembali ke atas](#green-harvest-hub-🌱)
 
 ## 🙋‍♂️ Tentang Developer
 
@@ -168,7 +157,6 @@ Hai! Kami adalah Salamander Code, seorang pengembang web yang bersemangat dalam 
 * [Profil GitHub Kami](https://github.com/Qira-Qira)
 * [Profil LinkedIn Kami](https://linkedin.com/in/nawaf-ariq-hilalbi)
 
-[⬆ Kembali ke atas](#green-harvest-hub-🌱)
 
 ## 📬 Kontak
 
@@ -177,7 +165,6 @@ Untuk pertanyaan, saran, atau kolaborasi, jangan ragu untuk menghubungi kami:
 * **Email**: nawafariq3@gmail.com
 * **WhatsApp**: +6282338184728
 
-[⬆ Kembali ke atas](#green-harvest-hub-🌱)
 
 ## ✨ Special Thanks / Acknowledgment
 
