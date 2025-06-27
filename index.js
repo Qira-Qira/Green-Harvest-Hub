@@ -70,7 +70,7 @@
         budi: {
           name: "Pak Budi Santoso",
           location: "Lembang, Bandung",
-          image: "assets/index/pak_budi.png",
+          image: "assets/images/pak_budi.png",
           fullBio:
             "Pak Budi Santoso adalah petani generasi ketiga yang telah mengabdikan hidupnya untuk pertanian organik selama lebih dari 25 tahun. Beliau memulai perjalanan organiknya pada tahun 1998 ketika melihat dampak negatif pestisida kimia terhadap lingkungan dan kesehatan keluarga. Dengan lahan seluas 5 hektar di Lembang, Pak Budi mengkhususkan diri dalam budidaya sayuran organik seperti selada, bayam, kangkung, dan berbagai jenis cabai. Beliau juga aktif dalam komunitas petani organik Bandung dan sering memberikan pelatihan kepada petani muda tentang teknik pertanian berkelanjutan.",
           specialties: [
@@ -87,7 +87,7 @@
         sari: {
           name: "Ibu Sari Wijaya",
           location: "Ciwidey, Bandung",
-          image: "assets/index/ibu_sari.png",
+          image: "assets/images/ibu_sari.png",
           fullBio:
             "Ibu Sari Wijaya adalah pionir agrowisata strawberry di kawasan Ciwidey. Dengan latar belakang pendidikan pertanian, beliau memulai kebun strawberry organiknya pada tahun 2005. Kini kebunnya telah menjadi destinasi agrowisata favorit dengan lebih dari 15 varietas strawberry yang ditanam secara organik. Ibu Sari tidak hanya fokus pada produksi, tetapi juga edukasi wisatawan tentang proses budidaya strawberry yang ramah lingkungan. Beliau juga mengembangkan produk olahan strawberry seperti selai, sirup, dan keripik strawberry.",
           specialties: ["Strawberry Organik", "Agrowisata", "Produk Olahan"],
@@ -100,7 +100,7 @@
         ahmad: {
           name: "Pak Ahmad Hakim",
           location: "Subang, Jawa Barat",
-          image: "assets/index/pak_ahmad.png",
+          image: "assets/images/pak_ahmad.png",
           fullBio:
             "Pak Ahmad Hakim adalah spesialis budidaya padi organik premium yang telah malang melintang di dunia pertanian selama 30 tahun. Beliau memulai transisi ke pertanian organik pada tahun 2010 setelah melihat potensi besar pasar beras organik. Dengan lahan persawahan seluas 10 hektar, Pak Ahmad mengembangkan berbagai varietas padi lokal unggul seperti Ciherang, Inpari, dan varietas lokal Subang. Beliau juga menerapkan sistem pertanian terpadu dengan budidaya ikan di sawah (mina padi) yang meningkatkan produktivitas dan keberlanjutan ekosistem.",
           specialties: ["Padi Organik", "Mina Padi", "Varietas Lokal"],
@@ -139,7 +139,7 @@
       const bookExperienceBtn = document.getElementById("book-experience-btn");
       bookExperienceBtn.addEventListener("click", () => {
         const message = encodeURIComponent(
-          "Halo! Saya tertarik dengan Premium Strawberry Harvest Experience. Bisa tolong berikan informasi lebih lanjut?"
+          "Halo! Saya tertarik dengan Pengalaman Panen Stroberi Premium. Bisakah Anda memberikan informasi lebih lanjut?"
         );
         const whatsappUrl = `https://wa.me/6281234567890?text=${message}`;
         window.open(whatsappUrl, "_blank");
