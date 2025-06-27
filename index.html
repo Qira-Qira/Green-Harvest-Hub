@@ -1,0 +1,1049 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Green Harvest Hub - Fresh From Jawa Barat Farms</title>
+
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="assets/android-chrome-192x192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="assets/android-chrome-512x512.png">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
+
+    <link rel="manifest" href="assets/site.webmanifest">
+
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: "#22c55e",
+              secondary: "#f97316",
+              accent: "#fbbf24",
+            },
+          },
+        },
+      };
+    </script>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <!-- Leaflet CSS for OpenStreetMap -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  </head>
+  <body class="font-sans">
+    <!-- Navigation -->
+    <nav class="bg-white/90 backdrop-blur-sm fixed w-full z-50 shadow-sm">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-16">
+          <div class="flex items-center space-x-2">
+            <div
+              class="w-8 h-8 bg-primary rounded-full flex items-center justify-center"
+            >
+              <i class="fas fa-leaf text-white text-sm"></i>
+            </div>
+            <span class="font-bold text-lg text-gray-800"
+              >Green Harvest Hub</span
+            >
+          </div>
+
+          <!-- Desktop Menu -->
+          <div class="hidden md:flex space-x-8">
+            <a
+              href="#home"
+              class="text-gray-700 hover:text-primary transition-colors"
+              >Beranda</a
+            >
+            <a
+              href="#harvest"
+              class="text-gray-700 hover:text-primary transition-colors"
+              >Panen Kami</a
+            >
+            <a
+              href="#calendar"
+              class="text-gray-700 hover:text-primary transition-colors"
+              >Kalender Panen</a
+            >
+            <a
+              href="#recipes"
+              class="text-gray-700 hover:text-primary transition-colors"
+              >Resep</a
+            >
+            <a
+              href="#contact"
+              class="text-gray-700 hover:text-primary transition-colors"
+              >Kontak</a
+            >
+          </div>
+
+          <!-- Mobile Menu Button -->
+          <button
+            id="mobile-menu-btn"
+            class="md:hidden p-2"
+            aria-label="Toggle mobile menu"
+          >
+            <i class="fas fa-bars text-gray-700"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Mobile Menu -->
+      <div id="mobile-menu" class="md:hidden bg-white border-t hidden">
+        <div class="px-4 py-2 space-y-2">
+          <a href="#home" class="block py-2 text-gray-700 hover:text-primary"
+            >Beranda</a
+          >
+          <a
+            href="#harvest"
+            class="block py-2 text-gray-700 hover:text-primary"
+            >Panen Kami</a
+          >
+          <a
+            href="#calendar"
+            class="block py-2 text-gray-700 hover:text-primary"
+            >Kalender Panen</a
+          >
+          <a href="#recipes" class="block py-2 text-gray-700 hover:text-primary"
+            >Resep/a
+          >
+          <a href="#contact" class="block py-2 text-gray-700 hover:text-primary"
+            >Kontak</a
+          >
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section
+      id="home"
+      class="relative h-screen flex items-center justify-center overflow-hidden"
+    >
+      <div
+        class="absolute inset-0 bg-gradient-to-r from-black/50 to-black/30 z-10"
+      ></div>
+      <div
+        class="absolute inset-0 bg-cover bg-center"
+        style="
+          background-image: url('assets/images/landing_page.png');
+        "
+      ></div>
+
+      <div class="relative z-20 text-center text-white max-w-4xl mx-auto px-4">
+        <h1 class="text-4xl md:text-6xl font-bold mb-6 leading-tight">
+          Fresh From <span class="text-accent">Jawa Barat</span> Farms
+        </h1>
+        <p class="text-lg md:text-xl mb-8 max-w-2xl mx-auto opacity-90">
+          Menghubungkan petani organik lokal dengan konsumen yang sadar akan produk segar dan pengalaman agrowisata yang tak terlupakan.
+        </p>
+        <div
+          class="flex flex-col sm:flex-row gap-4 justify-center items-center"
+        >
+          <a href="products.html">
+            <button
+              class="bg-secondary hover:bg-secondary/90 text-white px-8 py-3 rounded-full font-semibold transition-all transform hover:scale-105"
+            >
+              Lihat Produk
+            </button>
+          </a>
+          <button
+            id="hero-watch-story"
+            class="flex items-center space-x-2 text-white hover:text-accent transition-colors"
+          >
+            <div
+              class="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center hover:bg-white/30 transition-colors"
+            >
+              <i class="fas fa-play text-sm"></i>
+            </div>
+            <span>Lihat Cerita</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Season's Special Card -->
+    <section class="py-16 bg-gray-50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="bg-white rounded-2xl shadow-lg overflow-hidden">
+          <div class="grid md:grid-cols-2 gap-0">
+            <div class="p-8 lg:p-12 flex flex-col justify-center">
+              <div
+                class="inline-block bg-primary/10 text-primary px-3 py-1 rounded-full text-sm font-medium mb-4"
+              >
+                🍓 Musim Spesial
+              </div>
+              <h2 class="text-3xl lg:text-4xl font-bold text-gray-800 mb-4">
+                Pengalaman Panen Stroberi Premium
+              </h2>
+              <p class="text-gray-600 mb-6 leading-relaxed">
+                Bergabunglah bersama kami musim ini untuk pengalaman memetik stroberi termanis di dataran tinggi Bandung. Segar, organik, dan langsung
+ dari perkebunan kami yang berkelanjutan.
+              </p>
+
+              <div class="flex flex-wrap gap-4 mb-8">
+                <div class="text-center">
+                  <div class="text-2xl font-bold text-primary">50+</div>
+                  <div class="text-sm text-gray-600">Varietas</div>
+                </div>
+                <div class="text-center">
+                  <div class="text-2xl font-bold text-primary">100%</div>
+                  <div class="text-sm text-gray-600">Organik</div>
+                </div>
+                <div class="text-center">
+                  <div class="text-2xl font-bold text-primary">24/7</div>
+                  <div class="text-sm text-gray-600">Segar</div>
+                </div>
+              </div>
+
+              <button
+                id="book-experience-btn"
+                class="bg-secondary hover:bg-secondary/90 text-white px-6 py-3 rounded-full font-semibold transition-all transform hover:scale-105 w-fit"
+              >
+                Pesan Pengalaman Sekarang
+              </button>
+            </div>
+            <div class="relative h-64 md:h-auto">
+              <img
+                src="assets/images/fresh_strawberries.png"
+                alt="Fresh strawberries"
+                class="w-full h-full object-cover"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Meet Our Farmers -->
+    <section class="py-16" id="farmers">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl lg:text-4xl font-bold text-gray-800 mb-4">
+            Temui Petani Kami
+          </h2>
+          <p class="text-gray-600 max-w-2xl mx-auto">
+            Kenali para petani dan produsen yang bersemangat di balik
+ produk organik favorit Anda.
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8">
+          <!-- Farmer 1 -->
+          <div
+            class="bg-white rounded-xl shadow-lg p-6 text-center hover:shadow-xl transition-shadow"
+          >
+            <img
+              src="assets/images/pak_budi.png"
+              alt="Pak Budi Santoso"
+              class="w-24 h-24 rounded-full mx-auto mb-4 object-cover"
+            />
+            <h3 class="text-xl font-semibold text-gray-800 mb-1">
+              Pak Budi Santoso
+            </h3>
+            <p class="text-primary font-medium mb-3">Lembang, Bandung</p>
+            <p class="text-gray-600 text-sm mb-4 leading-relaxed">
+              Seorang petani generasi ketiga yang mengkhususkan diri pada sayuran organik. Pak
+ Budi telah menggunakan metode pertanian berkelanjutan tradisional dan modern.
+            </p>
+            <button
+              class="learn-more-btn text-primary hover:text-primary/80 font-medium text-sm"
+              data-farmer="budi"
+            >
+              Pelajari Lebih Lanjut  →
+            </button>
+          </div>
+
+          <!-- Farmer 2 -->
+          <div
+            class="bg-white rounded-xl shadow-lg p-6 text-center hover:shadow-xl transition-shadow"
+          >
+            <img
+              src="assets/images/ibu_sari.png"
+              alt="Ibu Sari Wijaya"
+              class="w-24 h-24 rounded-full mx-auto mb-4 object-cover"
+            />
+            <h3 class="text-xl font-semibold text-gray-800 mb-1">
+              Ibu Sari Wijaya
+            </h3>
+            <p class="text-primary font-medium mb-3">Ciwidey, Bandung</p>
+            <p class="text-gray-600 text-sm mb-4 leading-relaxed">
+              Ahli dalam budidaya stroberi dan manajemen agrowisata. Ibu
+ Sari menciptakan pengalaman kebun yang tak terlupakan bagi para pengunjung.
+            </p>
+            <button
+              class="learn-more-btn text-primary hover:text-primary/80 font-medium text-sm"
+              data-farmer="sari"
+            >
+              Pelajari Lebih Lanjut  →
+            </button>
+          </div>
+
+          <!-- Farmer 3 -->
+          <div
+            class="bg-white rounded-xl shadow-lg p-6 text-center hover:shadow-xl transition-shadow"
+          >
+            <img
+              src="assets/images/pak_ahmad.png"
+              alt="Pak Ahmad Hakim"
+              class="w-24 h-24 rounded-full mx-auto mb-4 object-cover"
+            />
+            <h3 class="text-xl font-semibold text-gray-800 mb-1">
+              Pak Ahmad Hakim
+            </h3>
+            <p class="text-primary font-medium mb-3">Subang, Jawa Barat</p>
+            <p class="text-gray-600 text-sm mb-4 leading-relaxed">
+              Spesialis pertanian padi yang berfokus pada varietas beras organik premium
+. Pak Ahmad menggabungkan inovasi dengan kearifan tradisional.
+            </p>
+            <button
+              class="learn-more-btn text-primary hover:text-primary/80 font-medium text-sm"
+              data-farmer="ahmad"
+            >
+              Pelajari Lebih Lanjut  →
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Agrowisata Map -->
+    <section class="py-16 bg-gray-50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl lg:text-4xl font-bold text-gray-800 mb-4">
+            Jelajahi Agrowisata Jawa Barat
+          </h2>
+          <p class="text-gray-600 max-w-2xl mx-auto">
+            Temukan lokasi wisata dan agrowisata terbaik di seluruh Jawa Barat
+          </p>
+        </div>
+
+        <!-- Filter Buttons -->
+        <div class="flex flex-wrap justify-center gap-4 mb-8">
+          <button
+            class="filter-btn active bg-primary text-white px-4 py-2 rounded-full text-sm font-medium transition-all"
+            data-filter="kebun-buah"
+            aria-label="Filter Kebun Buah"
+          >
+            🍎 Kebun Buah
+          </button>
+          <button
+            class="filter-btn bg-white text-gray-700 px-4 py-2 rounded-full text-sm font-medium transition-all hover:bg-gray-100"
+            data-filter="wisata-kopi"
+            aria-label="Filter Wisata Kopi"
+          >
+            ☕ Wisata Kopi
+          </button>
+          <button
+            class="filter-btn bg-white text-gray-700 px-4 py-2 rounded-full text-sm font-medium transition-all hover:bg-gray-100"
+            data-filter="pertanian-organik"
+            aria-label="Filter Pertanian Organik"
+          >
+            🌱 Pertanian Organik
+          </button>
+          <button
+            class="filter-btn bg-white text-gray-700 px-4 py-2 rounded-full text-sm font-medium transition-all hover:bg-gray-100"
+            data-filter="wisata-sawah"
+            aria-label="Filter Wisata Sawah"
+          >
+            🌾 Wisata Sawah
+          </button>
+        </div>
+
+        <!-- Map Container -->
+        <div class="bg-white rounded-xl shadow-lg p-4">
+          <div
+            id="map"
+            class="h-96 rounded-lg z-0"
+            role="application"
+            aria-label="Interactive map of West Java agrowisata locations"
+          ></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Harvest Calendar -->
+    <section id="calendar" class="py-16">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl lg:text-4xl font-bold text-gray-800 mb-4">
+            Kalender Panen
+          </h2>
+          <p class="text-gray-600 max-w-2xl mx-auto">
+            Ketahui waktu terbaik untuk menikmati produk segar dari kebun
+          </p>
+        </div>
+
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+          <!-- January -->
+          <div
+            class="bg-white rounded-xl shadow-lg p-4 text-center hover:shadow-xl transition-shadow"
+          >
+            <div class="text-2xl mb-2">🍊</div>
+            <h3 class="font-semibold text-gray-800 mb-1">Januari</h3>
+            <p class="text-sm text-gray-600">Jeruk</p>
+          </div>
+
+          <!-- February -->
+          <div
+            class="bg-white rounded-xl shadow-lg p-4 text-center hover:shadow-xl transition-shadow"
+          >
+            <div class="text-2xl mb-2">🥬</div>
+            <h3 class="font-semibold text-gray-800 mb-1">Februari</h3>
+            <p class="text-sm text-gray-600">Sayuran</p>
+          </div>
+
+          <!-- March -->
+          <div
+            class="bg-white rounded-xl shadow-lg p-4 text-center hover:shadow-xl transition-shadow"
+          >
+            <div class="text-2xl mb-2">🍓</div>
+            <h3 class="font-semibold text-gray-800 mb-1">Maret</h3>
+            <p class="text-sm text-gray-600">Strawberry</p>
+          </div>
+
+          <!-- April -->
+          <div
+            class="bg-white rounded-xl shadow-lg p-4 text-center hover:shadow-xl transition-shadow"
+          >
+            <div class="text-2xl mb-2">🌽</div>
+            <h3 class="font-semibold text-gray-800 mb-1">April</h3>
+            <p class="text-sm text-gray-600">Jagung</p>
+          </div>
+
+          <!-- May -->
+          <div
+            class="bg-white rounded-xl shadow-lg p-4 text-center hover:shadow-xl transition-shadow"
+          >
+            <div class="text-2xl mb-2">🍅</div>
+            <h3 class="font-semibold text-gray-800 mb-1">Mei</h3>
+            <p class="text-sm text-gray-600">Tomat</p>
+          </div>
+
+          <!-- June -->
+          <div
+            class="bg-white rounded-xl shadow-lg p-4 text-center hover:shadow-xl transition-shadow"
+          >
+            <div class="text-2xl mb-2">🌾</div>
+            <h3 class="font-semibold text-gray-800 mb-1">Juni</h3>
+            <p class="text-sm text-gray-600">Padi</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Our Harvest Story Timeline -->
+    <section class="py-16 bg-gradient-to-b from-green-50 to-white" id="harvest">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl lg:text-4xl font-bold text-gray-800 mb-4">
+            Kisah Panen Kami
+          </h2>
+          <p class="text-gray-600 max-w-2xl mx-auto mb-6">
+            Ikuti perjalanan produk organik dari benih hingga meja Anda
+          </p>
+          <button
+            id="watch-story-btn"
+            class="bg-primary hover:bg-primary/90 text-white px-6 py-3 rounded-full font-semibold transition-all transform hover:scale-105"
+          >
+            <i class="fas fa-play mr-2"></i>Lihat Cerita
+          </button>
+        </div>
+
+        <div class="space-y-12 mt-12">
+          <!-- Step 1 -->
+          <div class="flex flex-col md:flex-row items-center gap-8">
+            <div class="md:w-1/2">
+              <div class="flex items-center mb-4">
+                <div
+                  class="w-8 h-8 bg-primary rounded-full flex items-center justify-center text-white font-bold text-sm mr-4"
+                >
+                  1
+                </div>
+                <h3 class="text-xl font-semibold text-gray-800">
+                  Penanaman Organik
+                </h3>
+              </div>
+              <p class="text-gray-600 leading-relaxed">
+                Memulai dengan benih berkualitas tinggi dan tanah yang telah
+                disiapkan secara organik tanpa pestisida kimia berbahaya.
+              </p>
+            </div>
+            <div class="md:w-1/2">
+              <img
+                src="assets/images/penanaman_organik.png"
+                alt="Penanaman Organik"
+                class="w-full h-48 object-cover rounded-lg shadow-lg"
+              />
+            </div>
+          </div>
+
+          <!-- Step 2 -->
+          <div class="flex flex-col md:flex-row-reverse items-center gap-8">
+            <div class="md:w-1/2">
+              <div class="flex items-center mb-4">
+                <div
+                  class="w-8 h-8 bg-primary rounded-full flex items-center justify-center text-white font-bold text-sm mr-4"
+                >
+                  2
+                </div>
+                <h3 class="text-xl font-semibold text-gray-800">
+                  Perawatan Alami
+                </h3>
+              </div>
+              <p class="text-gray-600 leading-relaxed">
+                Menggunakan pupuk kompos alami dan metode pengendalian hama
+                ramah lingkungan untuk menjaga kualitas tanaman.
+              </p>
+            </div>
+            <div class="md:w-1/2">
+              <img
+                src="assets/images/perawatan_alami.png"
+                alt="Perawatan Alami"
+                class="w-full h-48 object-cover rounded-lg shadow-lg"
+              />
+            </div>
+          </div>
+
+          <!-- Step 3 -->
+          <div class="flex flex-col md:flex-row items-center gap-8">
+            <div class="md:w-1/2">
+              <div class="flex items-center mb-4">
+                <div
+                  class="w-8 h-8 bg-primary rounded-full flex items-center justify-center text-white font-bold text-sm mr-4"
+                >
+                  3
+                </div>
+                <h3 class="text-xl font-semibold text-gray-800">
+                  Panen Berkualitas
+                </h3>
+              </div>
+              <p class="text-gray-600 leading-relaxed">
+                Panen dilakukan pada waktu yang tepat untuk memastikan rasa dan
+                nutrisi optimal dari setiap produk.
+              </p>
+            </div>
+            <div class="md:w-1/2">
+              <img
+                src="assets/images/panen_berkualitas.png"
+                alt="Panen Berkualitas"
+                class="w-full h-48 object-cover rounded-lg shadow-lg"
+              />
+            </div>
+          </div>
+
+          <!-- Step 4 -->
+          <div class="flex flex-col md:flex-row-reverse items-center gap-8">
+            <div class="md:w-1/2">
+              <div class="flex items-center mb-4">
+                <div
+                  class="w-8 h-8 bg-primary rounded-full flex items-center justify-center text-white font-bold text-sm mr-4"
+                >
+                  4
+                </div>
+                <h3 class="text-xl font-semibold text-gray-800">
+                  Pengemasan Ramah Lingkungan
+                </h3>
+              </div>
+              <p class="text-gray-600 leading-relaxed">
+                Menggunakan kemasan biodegradable dan sustainable untuk menjaga
+                kelestarian lingkungan.
+              </p>
+            </div>
+            <div class="md:w-1/2">
+              <img
+                src="assets/images/pengemasan_ramah_lingkungan.png"
+                alt="Pengemasan Ramah Lingkungan"
+                class="w-full h-48 object-cover rounded-lg shadow-lg"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Healthy Recipes Section -->
+    <section id="recipes" class="py-16 bg-gray-50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl lg:text-4xl font-bold text-gray-800 mb-4">
+            Resep Sehat dari Hasil Panen Kami
+          </h2>
+          <p class="text-gray-600 max-w-2xl mx-auto">
+            Temukan resep lezat dan bergizi menggunakan bahan-bahan segar
+ dari pertanian organik kami
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8">
+          <!-- Recipe 1 -->
+          <div
+            class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow"
+          >
+            <div class="relative">
+              <img
+                src="assets/images/salad_sayur.png"
+                alt="Salad Sayur Organik"
+                class="w-full h-48 object-cover"
+              />
+              <div class="absolute top-4 left-4">
+                <span
+                  class="bg-primary text-white px-2 py-1 rounded-full text-xs font-medium"
+                  >Vegetarian</span
+                >
+              </div>
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-semibold text-gray-800 mb-2">
+                Salad Sayur Organik
+              </h3>
+              <div class="flex items-center justify-between mb-4">
+                <span class="text-sm text-gray-600">⏱️ 15 min</span>
+                <div class="flex text-yellow-400">
+                  <i class="fas fa-star text-sm"></i>
+                  <i class="fas fa-star text-sm"></i>
+                  <i class="fas fa-star text-sm"></i>
+                  <i class="fas fa-star text-sm"></i>
+                  <i class="fas fa-star text-sm"></i>
+                </div>
+              </div>
+              <button
+                class="recipe-btn bg-primary hover:bg-primary/90 text-white px-4 py-2 rounded-lg font-medium transition-colors w-full"
+                data-recipe="salad-organik"
+              >
+                Lihat Resep
+              </button>
+            </div>
+          </div>
+
+          <!-- Recipe 2 -->
+          <div
+            class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow"
+          >
+            <div class="relative">
+              <img
+                src="assets/images/tropical_smoothie_bowl.png"
+                alt="Strawberry Smoothie Bowl"
+                class="w-full h-48 object-cover"
+              />
+              <div class="absolute top-4 left-4">
+                <span
+                  class="bg-green-500 text-white px-2 py-1 rounded-full text-xs font-medium"
+                  >Vegan</span
+                >
+              </div>
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-semibold text-gray-800 mb-2">
+                Strawberry Smoothie Bowl
+              </h3>
+              <div class="flex items-center justify-between mb-4">
+                <span class="text-sm text-gray-600">⏱️ 10 min</span>
+                <div class="flex text-yellow-400">
+                  <i class="fas fa-star text-sm"></i>
+                  <i class="fas fa-star text-sm"></i>
+                  <i class="fas fa-star text-sm"></i>
+                  <i class="fas fa-star text-sm"></i>
+                  <i class="far fa-star text-sm"></i>
+                </div>
+              </div>
+              <button
+                class="recipe-btn bg-primary hover:bg-primary/90 text-white px-4 py-2 rounded-lg font-medium transition-colors w-full"
+                data-recipe="strawberry-smoothie"
+              >
+                Lihat Resep
+              </button>
+            </div>
+          </div>
+
+          <!-- Recipe 3 -->
+          <div
+            class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow"
+          >
+            <div class="relative">
+              <img
+                src="assets/images/nasi_timbel_sehat.png"
+                alt="Nasi Tomat Sehat"
+                class="w-full h-48 object-cover"
+              />
+              <div class="absolute top-4 left-4">
+                <span
+                  class="bg-secondary text-white px-2 py-1 rounded-full text-xs font-medium"
+                  >Gluten-Free</span
+                >
+              </div>
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-semibold text-gray-800 mb-2">
+                Nasi Tomat Sehat
+              </h3>
+              <div class="flex items-center justify-between mb-4">
+                <span class="text-sm text-gray-600">⏱️ 25 min</span>
+                <div class="flex text-yellow-400">
+                  <i class="fas fa-star text-sm"></i>
+                  <i class="fas fa-star text-sm"></i>
+                  <i class="fas fa-star text-sm"></i>
+                  <i class="fas fa-star text-sm"></i>
+                  <i class="fas fa-star text-sm"></i>
+                </div>
+              </div>
+              <button
+                class="recipe-btn bg-primary hover:bg-primary/90 text-white px-4 py-2 rounded-lg font-medium transition-colors w-full"
+                data-recipe="nasi-tomat"
+              >
+                Lihat Resep
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Final CTA Banner -->
+    <section class="py-16 bg-gradient-to-r from-primary to-green-600 relative">
+      <div class="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
+        <h2 class="text-3xl lg:text-4xl font-bold text-white mb-4">
+          Mulai Hidup Sehat Hari Ini
+        </h2>
+        <p class="text-green-100 text-lg mb-8 max-w-2xl mx-auto">
+          Bergabunglah dengan komunitas konsumen yang peduli kesehatan dan
+          lingkungan
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="products.html">
+            <button
+              class="bg-white text-primary hover:bg-gray-100 px-8 py-3 rounded-full font-semibold transition-all transform hover:scale-105"
+            >
+              Pesan Sekarang
+            </button>
+          </a>
+          <a href="tel:+6281234567890">
+            <button
+              class="border-2 border-white text-white hover:bg-white hover:text-primary px-8 py-3 rounded-full font-semibold transition-all"
+            >
+              Hubungi Kami
+            </button>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Floating Action Buttons -->
+    <div class="fixed bottom-6 right-6 z-40 flex flex-col gap-4">
+      <!-- Chatbot Button -->
+      <button
+        id="chatbot-btn"
+        class="bg-blue-500 hover:bg-blue-600 text-white w-14 h-14 rounded-full shadow-lg flex items-center justify-center transition-all transform hover:scale-110"
+        aria-label="Open chatbot"
+      >
+        <i class="fas fa-comments text-lg"></i>
+      </button>
+
+      <!-- Cart Button -->
+      <a href="products.html">
+        <button
+          class="bg-secondary hover:bg-secondary/90 text-white w-14 h-14 rounded-full shadow-lg flex items-center justify-center transition-all transform hover:scale-110"
+          aria-label="Shopping cart"
+        >
+          <i class="fas fa-shopping-cart text-lg"></i>
+        </button>
+      </a>
+    </div>
+
+    <!-- Recipe Modal -->
+    <div
+      id="recipe-modal"
+      class="fixed inset-0 bg-black/50 z-50 hidden items-center justify-center p-4"
+      role="dialog"
+      aria-labelledby="recipe-modal-title"
+      aria-modal="true"
+    >
+      <div
+        class="bg-white rounded-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto"
+      >
+        <div class="p-6">
+          <div class="flex justify-between items-center mb-4">
+            <h2
+              id="recipe-modal-title"
+              class="text-2xl font-bold text-gray-800"
+            ></h2>
+            <button
+              id="close-recipe-modal"
+              class="text-gray-500 hover:text-gray-700 text-2xl"
+              aria-label="Close recipe modal"
+            >
+              <i class="fas fa-times"></i>
+            </button>
+          </div>
+          <div id="recipe-modal-content">
+            <!-- Recipe content will be inserted here -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Farmer Profile Modal -->
+    <div
+      id="farmer-modal"
+      class="fixed inset-0 bg-black/50 z-50 hidden items-center justify-center p-4"
+      role="dialog"
+      aria-labelledby="farmer-modal-title"
+      aria-modal="true"
+    >
+      <div
+        class="bg-white rounded-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto"
+      >
+        <div class="p-6">
+          <div class="flex justify-between items-center mb-4">
+            <h2
+              id="farmer-modal-title"
+              class="text-2xl font-bold text-gray-800"
+            ></h2>
+            <button
+              id="close-farmer-modal"
+              class="text-gray-500 hover:text-gray-700 text-2xl"
+              aria-label="Close farmer modal"
+            >
+              <i class="fas fa-times"></i>
+            </button>
+          </div>
+          <div id="farmer-modal-content">
+            <!-- Farmer content will be inserted here -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Video Story Modal -->
+    <div
+      id="video-modal"
+      class="fixed inset-0 bg-black/50 z-50 hidden items-center justify-center p-4"
+      role="dialog"
+      aria-labelledby="video-modal-title"
+      aria-modal="true"
+    >
+      <div class="bg-white rounded-xl max-w-4xl w-full">
+        <div class="p-6">
+          <div class="flex justify-between items-center mb-4">
+            <h2 id="video-modal-title" class="text-2xl font-bold text-gray-800">
+              Kisah Panen Kami
+            </h2>
+            <button
+              id="close-video-modal"
+              class="text-gray-500 hover:text-gray-700 text-2xl"
+              aria-label="Close video modal"
+            >
+              <i class="fas fa-times"></i>
+            </button>
+          </div>
+          <div
+            class="aspect-video bg-gray-200 rounded-lg flex items-center justify-center"
+          >
+            <div class="text-center">
+              <i class="fas fa-play-circle text-6xl text-gray-400 mb-4"></i>
+              <p class="text-gray-600">Video Cerita Green Harvest Hub</p>
+              <p class="text-sm text-gray-500 mt-2">
+                Rasakan perjalanan kami dari lahan pertanian hingga ke meja makan
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Chatbot Modal -->
+    <div
+      id="chatbot-modal"
+      class="fixed inset-0 bg-black/50 z-50 hidden items-center justify-center p-4"
+      role="dialog"
+      aria-labelledby="chatbot-modal-title"
+      aria-modal="true"
+    >
+      <div class="bg-white rounded-xl max-w-md w-full h-[500px] flex flex-col">
+        <!-- Chat Header -->
+        <div
+          class="bg-primary text-white p-4 rounded-t-xl flex justify-between items-center"
+        >
+          <div class="flex items-center space-x-3">
+            <div
+              class="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center"
+            >
+              <i class="fas fa-leaf text-sm"></i>
+            </div>
+            <div>
+              <h3 id="chatbot-modal-title" class="font-semibold">
+                Asisten Green Harvest
+              </h3>
+              <p class="text-xs text-green-100">Online sekarang</p>
+            </div>
+          </div>
+          <button
+            id="close-chatbot-modal"
+            class="text-white hover:text-green-200 text-xl"
+            aria-label="Close chatbot"
+          >
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+
+        <!-- Chat Messages -->
+        <div id="chat-messages" class="flex-1 p-4 overflow-y-auto bg-gray-50">
+          <div class="space-y-4">
+            <div class="flex items-start space-x-2">
+              <div
+                class="w-8 h-8 bg-primary rounded-full flex items-center justify-center flex-shrink-0"
+              >
+                <i class="fas fa-leaf text-white text-xs"></i>
+              </div>
+              <div class="bg-white p-3 rounded-lg shadow-sm max-w-xs">
+                <p class="text-sm text-gray-800">
+                  Halo! Selamat datang di Green Harvest Hub. Ada yang bisa saya
+                  bantu hari ini?
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Chat Input -->
+        <div class="p-4 border-t">
+          <div class="flex space-x-2">
+            <input
+              type="text"
+              id="chat-input"
+              placeholder="Ketik pesan Anda..."
+              class="flex-1 px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+            />
+            <button
+              id="send-message"
+              class="bg-primary hover:bg-primary/90 text-white px-4 py-2 rounded-lg transition-colors"
+              aria-label="Send message"
+            >
+              <i class="fas fa-paper-plane"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer id="contact" class="bg-gray-900 text-white py-12">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid md:grid-cols-4 gap-8">
+          <!-- Company Info -->
+          <div class="md:col-span-1">
+            <div class="flex items-center space-x-2 mb-4">
+              <div
+                class="w-8 h-8 bg-primary rounded-full flex items-center justify-center"
+              >
+                <i class="fas fa-leaf text-white text-sm"></i>
+              </div>
+              <span class="font-bold text-lg">Green Harvest Hub</span>
+            </div>
+            <p class="text-gray-400 text-sm leading-relaxed">
+              Menghubungkan petani lokal dengan konsumen untuk produk organik
+              terbaik dan pengalaman agrowisata yang tak terlupakan.
+            </p>
+          </div>
+
+          <!-- Products -->
+          <div>
+            <h3 class="font-semibold text-lg mb-4">Produk</h3>
+            <ul class="space-y-2 text-sm text-gray-400">
+              <li>
+                <a href="#" class="hover:text-white transition-colors"
+                  >Buah Segar</a
+                >
+              </li>
+              <li>
+                <a href="#" class="hover:text-white transition-colors"
+                  >Sayuran Organik</a
+                >
+              </li>
+              <li>
+                <a href="#" class="hover:text-white transition-colors"
+                  >Beras Premium</a
+                >
+              </li>
+              <li>
+                <a href="#" class="hover:text-white transition-colors"
+                  >Produk Olahan</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <!-- Services -->
+          <div>
+            <h3 class="font-semibold text-lg mb-4">Layanan</h3>
+            <ul class="space-y-2 text-sm text-gray-400">
+              <li>
+                <a href="#" class="hover:text-white transition-colors"
+                  >Agrowisata</a
+                >
+              </li>
+              <li>
+                <a href="#" class="hover:text-white transition-colors"
+                  >Farm Tour</a
+                >
+              </li>
+              <li>
+                <a href="#" class="hover:text-white transition-colors"
+                  >Konsultasi Pertanian</a
+                >
+              </li>
+              <li>
+                <a href="#" class="hover:text-white transition-colors"
+                  >Pelatihan Organik</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <!-- Contact -->
+          <div>
+            <h3 class="font-semibold text-lg mb-4">Kontak</h3>
+            <ul class="space-y-2 text-sm text-gray-400">
+              <li class="flex items-center space-x-2">
+                <i class="fas fa-phone text-primary"></i>
+                <a
+                  href="tel:+6281234567890"
+                  class="hover:text-white transition-colors"
+                  >+62 812-3456-7890</a
+                >
+              </li>
+              <li class="flex items-center space-x-2">
+                <i class="fas fa-envelope text-primary"></i>
+                <span>info@greenharvesthub.com</span>
+              </li>
+              <li class="flex items-center space-x-2">
+                <i class="fas fa-map-marker-alt text-primary"></i>
+                <span>Bandung, Jawa Barat</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div
+          class="border-t border-gray-800 mt-8 pt-8 text-center text-sm text-gray-400"
+        >
+          <p>&copy; 2024 Green Harvest Hub. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="index.js">
+    </script>
+  </body>
+</html>
